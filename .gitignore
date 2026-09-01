@@ -1,0 +1,15 @@
+.RData
+.Rhistory
+.Ruserdata
+.Rproj.user/
+
+# Raw/unpublished RNA-seq data
+*gene count matrix*
+Metadata ERF11.txt
+
+# Excel data files
+*.xlsx
+
+# Temporary files
+*.tmp
+~$*
