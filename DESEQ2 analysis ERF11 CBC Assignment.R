@@ -38,6 +38,66 @@ coldata <-(read.table("Metadata ERF11.txt", header=TRUE, row.names=1))
 dim(coldata)
 head(coldata)
 
+# =============================================================================
+# CONTROL 2: INVARIANT CHECKS
+# =============================================================================
+
+cat("\n===== INVARIANT CHECKS =====\n")
+
+# Exactly six samples
+cat("Number of samples:", ncol(countdata), "\n")
+stopifnot(ncol(countdata) == 6)
+
+# Raw counts cannot be negative
+cat("All counts non-negative:",
+    all(countdata >= 0), "\n")
+stopifnot(all(countdata >= 0))
+
+# Raw counts should be integers
+cat("All counts integers:",
+    all(countdata == round(countdata)), "\n")
+stopifnot(all(countdata == round(countdata)))
+
+# Count matrix and metadata must have exactly the same sample order
+cat(
+  "Metadata/count order identical:",
+  identical(colnames(countdata), rownames(coldata)),
+  "\n"
+)
+
+stopifnot(
+  identical(colnames(countdata), rownames(coldata))
+)
+
+# Sample names cannot be duplicated
+cat(
+  "Duplicated sample names:",
+  anyDuplicated(colnames(countdata)),
+  "\n"
+)
+
+stopifnot(
+  anyDuplicated(colnames(countdata)) == 0
+)
+
+# Check gene IDs
+cat(
+  "Duplicated gene IDs:",
+  anyDuplicated(rownames(countdata)),
+  "\n"
+)
+
+# Treatment balance
+cat("\nSamples per treatment:\n")
+print(table(coldata$Treatment))
+
+stopifnot(
+  sum(coldata$Treatment == "air_ERF11") == 3,
+  sum(coldata$Treatment == "ethylene_ERF11") == 3
+)
+
+cat("\nAll required invariant checks passed.\n")
+
 #Check all sample IDs in colData are also in CountData and match their orders
 all(rownames(coldata) %in% colnames(countdata))
 countdata <- countdata[, rownames(coldata)]
