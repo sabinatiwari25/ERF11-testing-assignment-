@@ -1,0 +1,51 @@
+CONTROL 1: KNOWN-ANSWER CONTROL
+================================
+
+Comparison: Ethylene ERF11 vs Air ERF11
+
+Prediction:
+Independently identified EIN3-regulated genes should be
+overrepresented among genes responding to ethylene.
+
+DEG criterion:
+FDR < 0.05 
+|log2FoldChange| > 1 
+
+Total statistically testable genes: 10962 
+Total significant DEGs: 245 
+Upregulated DEGs: 121 
+Downregulated DEGs: 124 
+
+Unique EIN3 genes in reference list: 375 
+EIN3 genes present/testable: 250 
+EIN3 genes recovered as DEGs: 40 
+EIN3 recovery percentage: 16 %
+
+Direction of EIN3 DEGs:
+
+down   up 
+  39    1 
+
+Contingency table:
+              DEG
+EIN3_regulated FALSE  TRUE
+         FALSE 10507   205
+         TRUE    210    40
+
+Fisher's exact enrichment test:
+
+	Fisher's Exact Test for Count Data
+
+data:  ein3_table
+p-value < 2.2e-16
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+  6.591931 14.175708
+sample estimates:
+odds ratio 
+  9.756537 
+
+
+Interpretation:
+Known EIN3-regulated genes were significantly enriched among
+ethylene-responsive DEGs, supporting the known-answer control.
