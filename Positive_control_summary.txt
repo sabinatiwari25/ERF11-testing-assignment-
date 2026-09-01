@@ -1,0 +1,52 @@
+CONTROL 4: POSITIVE CONTROL
+===========================
+
+Purpose:
+Artificially introduce known expression differences into genes
+that originally showed little evidence of an Air/Ethylene effect.
+
+Signal planted:
+Counts for the same 20 genes were multiplied in all three
+ethylene samples by factors corresponding to planted log2FC
+values of 0.25, 0.5, 1, 2, and 3.
+
+Preserved:
+- Original raw count matrix structure
+- Six samples
+- Three Air and three Ethylene samples
+- Original biological variability
+- Gene identities
+- DESeq2 analysis method
+- Filtering rule
+- Original DEG criteria
+
+Selected planted genes: 20 
+
+Titration results:
+  planted_log2FC fold_multiplier n_planted
+1           0.25        1.189207        20
+2           0.50        1.414214        20
+3           1.00        2.000000        20
+4           2.00        4.000000        20
+5           3.00        8.000000        20
+  n_FDR_detected FDR_detection_rate
+1              0                  0
+2              0                  0
+3             16                 80
+4             20                100
+5             20                100
+  n_pipeline_detected pipeline_detection_rate
+1                   0                       0
+2                   0                       0
+3                  13                      65
+4                  20                     100
+5                  20                     100
+  median_estimated_log2FC median_added_log2FC
+1               0.3782895           0.2488150
+2               0.6239695           0.4966764
+3               1.1234413           0.9952150
+4               2.1212284           1.9927492
+5               3.1157974           2.9915294
+
+Primary recovery criterion:
+FDR < 0.05 and log2FoldChange > 1
