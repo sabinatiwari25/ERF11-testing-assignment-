@@ -1,0 +1,55 @@
+CONTROL 7: DETERMINISM
+======================
+
+Biological comparison:
+Ethylene ERF11 vs Air ERF11
+
+Purpose:
+Determine whether the same raw input data and same DESeq2
+pipeline produce identical differential-expression results
+when independently executed twice.
+
+Input files:
+air and ethylene erf11 gene count matrix.csv 
+          "b745e0987bee2bcc2963c66e15726280" 
+                          Metadata ERF11.txt 
+          "202f81c4a30f9fb8acaebdcd36b27a00" 
+
+Run 1 genes: 19820 
+Run 2 genes: 19820 
+
+Dimensions identical: TRUE 
+Gene order identical: TRUE 
+Entire result table exactly identical: TRUE 
+P-value NA pattern identical: TRUE 
+Adjusted-P NA pattern identical: TRUE 
+DEG classifications identical: TRUE 
+Output CSV files byte-for-byte identical: TRUE 
+
+Maximum numerical differences:
+        Variable
+1       baseMean
+2 log2FoldChange
+3          lfcSE
+4           stat
+5         pvalue
+6           padj
+  Maximum_absolute_difference
+1                           0
+2                           0
+3                           0
+4                           0
+5                           0
+6                           0
+
+Run 1 DEG counts:
+run1_class
+ down    ns    up 
+  124 19575   121 
+
+Run 2 DEG counts:
+run2_class
+ down    ns    up 
+  124 19575   121 
+
+Overall determinism result: PASS 
