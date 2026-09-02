@@ -1,0 +1,35 @@
+project: ERF11-testing-assignment
+
+analysis:
+  description: "ERF11 RNA-seq differential expression: ethylene versus air"
+  primary_method: "DESeq2"
+  design: "~ Treatment"
+  comparison: "ethylene_ERF11 vs air_ERF11"
+  prefilter: "rowSums(counts) > 20"
+  independent_filtering_alpha: 0.10
+  DEG_adjusted_p_threshold: 0.05
+  DEG_absolute_log2FC_threshold: 1
+
+software:
+  R: "4.4.1"
+  DESeq2: "1.44.0"
+  edgeR: "4.2.2"
+  ggplot2: "4.0.1"
+  dplyr: "1.2.0"
+  ggrepel: "0.9.6"
+
+samples:
+  total: 6
+  air_ERF11: 3
+  ethylene_ERF11: 3
+
+primary_result:
+  genes_analyzed: 19820
+  total_DEGs: 245
+  upregulated: 121
+  downregulated: 124
+
+reproducibility:
+  session_info: "SessionInfo_DESeq2_determinism.txt"
+  package_versions: "Software_versions.csv"
+  input_checksums: "Determinism_input_MD5.txt"
