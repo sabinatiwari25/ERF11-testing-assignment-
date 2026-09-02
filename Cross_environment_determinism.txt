@@ -1,0 +1,17 @@
+CONTROL 7: CROSS-ENVIRONMENT DETERMINISM
+
+Primary analysis computer:
+Run 1 = 245 DEGs
+Run 2 = 245 DEGs
+
+Independent college desktop:
+Genes analyzed = 19,820
+Upregulated DEGs = 121
+Downregulated DEGs = 124
+Total DEGs = 245
+
+Conclusion:
+The DESeq2 workflow reproduced the same primary DEG result
+on a separate computing environment.
+
+Status: PASS
