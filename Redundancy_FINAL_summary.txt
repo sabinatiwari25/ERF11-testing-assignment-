@@ -1,0 +1,59 @@
+CONTROL 5: REDUNDANCY
+=====================
+
+Biological comparison:
+Ethylene ERF11 vs Air ERF11
+
+Purpose:
+Assess whether differential-expression effect estimates are robust
+to analysis with a second established RNA-seq method.
+
+Primary method:
+DESeq2
+
+Redundant method:
+edgeR using filterByExpr, TMM normalization, dispersion estimation,
+and quasi-likelihood testing.
+
+Why filterByExpr was used:
+edgeR recommends filtering genes with insufficient expression before
+dispersion estimation and multiple-testing correction. This reduces
+the contribution of genes with little statistical information.
+
+edgeR filtering:
+Original genes: 26719 
+Genes retained: 15812 
+Genes removed: 10907 
+
+edgeR dispersion:
+Common dispersion: 0.09024141 
+Common BCV: 0.3004021 
+
+Differential-expression results:
+DESeq2 DEGs among common genes: 243 
+edgeR DEGs: 1 
+Shared significant DEGs: 1 
+Jaccard overlap: 0.0041 
+
+Fold-change agreement across common genes:
+Pearson correlation: 0.9849 
+Spearman correlation: 0.9958 
+Overall directional agreement: 98.4 %
+
+Agreement among DESeq2 significant genes:
+Direction agreement: 100 %
+Pearson correlation: 0.9996 
+Spearman correlation: 0.9997 
+
+Important limitation:
+DESeq2 and edgeR are not fully independent because they share the
+same raw counts, biological samples, treatment labels and general
+negative-binomial framework. Upstream errors such as incorrect sample
+labels could therefore affect both approaches in the same way.
+
+Classification table:
+      edgeR
+DESeq2  down    ns
+  down     1   123
+  ns       0 15569
+  up       0   119
